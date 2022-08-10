@@ -15,27 +15,16 @@
         <canvas id="my-canvas" class="my-canvas" height="250" width="450" style="outline:2px solid #121212"
             onclick="onClickCanvas(event)"></canvas>
     </div>
-    <div class="img-container">
-        <div class="">img</div>
-        <div class="">img</div>
-        <div class="">img</div>
-        <div class="">img</div>
-        <div class="">img</div>
-        <div class="">img</div>
-        <div class="">img</div>
-        <div class="">img</div>
-        <div class="">img</div>
-        <div class="">img</div>
-        <div class="">img</div>
-        <div class="">img</div>
-        <div class="">img</div>
-        <div class="">img</div>
-        <div class="">img</div>
-        <div class="">img</div>
-        <div class="">img</div>
-        <div class="">img</div>
+    <div class="img-editor">
+        <input type="text" class="user-text" oninput="setLineTxt()" placeholder="text">
+        Text Border Color: <input type="color" onchange="getTextBorderColor(this.value)" id="color" class="border-color"
+            value="#121212" />
+        Text Color: <input type="color" onchange="getTextColor(this.value)" id="color" class="shape-color"
+            value="#EEFF00" />
     </div>
-    <div class="img-editor"></div>
+    <div class="img-container">
+    </div>
+    <script src="js/gallery-controller.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
     <script src="js/main.js"></script>

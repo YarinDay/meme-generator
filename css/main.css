@@ -17,7 +17,7 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: 200px;
+    width: 200px;
 }
 
 .canvas-container{
