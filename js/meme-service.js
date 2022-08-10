@@ -29,42 +29,55 @@ var gMeme = {
         {
             txt: '',
             size: 20,
-            align: 'left',
-            color: 'red'
+            align: 'center',
+            textColor: '#121212'
         }
     ]
 }
-var gTextBorderColor = '#121212'
-var gTextColor = '#121212'
+var isChoseImg = false
+// var gTextBorderColor = '#121212'
+// var gTextColor = '#121212'
 
 function getMeme() {
     return gMeme
 }
 
 function increaseFont() {
-    gMeme.lines[0].size += 5
+    gMeme.lines[gMeme.selectedLineIdx].size += 1
 }
 
 function decreaseFont() {
-    gMeme.lines[0].size -= 5
+    gMeme.lines[gMeme.selectedLineIdx].size -= 1
 }
 
 function switchLine() {
+    var meme = getMeme()
+    if (meme.selectedLineIdx < meme.lines.length - 1) meme.selectedLineIdx++
+    else meme.selectedLineIdx = 0
+    console.log(meme.selectedLineIdx);
+}
 
+function addLine(txt,textColor) {
+    gMeme.lines[gMeme.lines.length] = {
+        txt,
+        size: 20,
+        align: 'center',
+        textColor
+    }
+    gMeme.selectedLineIdx = gMeme.lines.length-1
 }
 
 function setImg(imgId) {
     gMeme.selectedImgId = imgId
 }
 
-function setTextBorderColor(color) {
-    gTextBorderColor = color
-    renderMeme()
-}
+// function setTextBorderColor(color) {
+//     gTextBorderColor = color
+//     renderMeme()
+// }
 
 function setTextColor(color) {
-    gTextColor = color
-    renderMeme()
+    gMeme.lines[gMeme.selectedLineIdx].textColor = color
 }
 
 // function setImg(meme) {

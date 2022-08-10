@@ -11,22 +11,24 @@
 
 <body onload="init()">
     <div class="canvas-container">
-        <h3>Container</h3>
+        <h3 class="title">Make your meme!</h3>
         <canvas id="my-canvas" class="my-canvas" height="250" width="450" style="outline:2px solid #121212"
             onclick="onClickCanvas(event)"></canvas>
     </div>
     <div class="img-editor">
         <input type="text" class="user-text" oninput="setLineTxt()" placeholder="text">
-        Text Border Color: <input type="color" onchange="getTextBorderColor(this.value)" id="color" class="border-color"
-            value="#121212" />
+        <!-- Text Border Color: <input type="color" onchange="getTextBorderColor(this.value)" id="color" class="border-color"
+            value="#121212" /> -->
         Text Color: <input type="color" onchange="getTextColor(this.value)" id="color" class="shape-color"
             value="#121212" />
             <button onclick="onIncreaseFont()"><img src="ICONS/increase font - icon.png"/></button>
             <button onclick="onDecreaseFont()"><img src="ICONS/decrease font - icon.png"/></button>
             <button onclick="onSwitchLine()"><img src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png"/></button>
+            <button onclick="onAddLine()"><img src="ICONS/add.png"/></button>
     </div>
     <div class="img-container">
     </div>
+    <script src="js/storage.service.js"></script>
     <script src="js/gallery-controller.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>

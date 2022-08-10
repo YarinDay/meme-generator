@@ -12,3 +12,11 @@ function init() {
     renderMeme()
     console.log(getMeme(gMeme))
 }
+
+
+function hideGallery(){
+    document.querySelector('.title').style.visibility= 'visible';
+    document.querySelector('.my-canvas').style.visibility= 'visible';
+    document.querySelector('.img-editor').style.visibility= 'visible';
+    // document.querySelector('.img-container').style.visibility= 'hidden';
+}
