@@ -19,7 +19,8 @@ var gImgs = [
     { id: 15, url: 'img/15.jpg', keywords: ['funny', 'cat'] },
     { id: 16, url: 'img/16.jpg', keywords: ['funny', 'happy'] },
     { id: 17, url: 'img/17.jpg', keywords: ['funny', 'cat'] },
-    { id: 18, url: 'img/18.jpg', keywords: ['funny', 'happy'] }
+    { id: 18, url: 'img/18.jpg', keywords: ['funny', 'happy'] },
+    { id: 19, url: 'img/19.jpg', keywords: ['funny', 'happy'] }
 ];
 var gMeme = {
     selectedImgId: 2,
@@ -34,23 +35,22 @@ var gMeme = {
     ]
 }
 var gTextBorderColor = '#121212'
-var gTextColor = '#EEFF00'
+var gTextColor = '#121212'
 
 function getMeme() {
     return gMeme
 }
 
-
-function setLineTxt() {
-    let userText = document.querySelector('.user-text').value
-    gMeme.lines[0].txt = userText
-    renderMeme()
+function increaseFont() {
+    gMeme.lines[0].size += 5
 }
 
+function decreaseFont() {
+    gMeme.lines[0].size -= 5
+}
 
-function onImgSelect(imgId) {
-    setImg(imgId)
-    renderMeme()
+function switchLine() {
+
 }
 
 function setImg(imgId) {

@@ -24,5 +24,11 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-bottom: 20px;
     /* display: none; */
+}
+
+
+button img{
+    width: 20px;
 }
