@@ -20,3 +20,9 @@ function hideGallery(){
     document.querySelector('.img-editor').style.visibility= 'visible';
     // document.querySelector('.img-container').style.visibility= 'hidden';
 }
+
+function downloadCanvas(elLink) {
+    const data = gElCanvas.toDataURL()
+    elLink.href = data
+    elLink.download = 'my-image.jpg'
+}

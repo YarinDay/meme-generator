@@ -25,14 +25,26 @@
             <button onclick="onDecreaseFont()"><img src="ICONS/decrease font - icon.png"/></button>
             <button onclick="onSwitchLine()"><img src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png"/></button>
             <button onclick="onAddLine()"><img src="ICONS/add.png"/></button>
+            <button onclick="onAlignLeft()"><img src="ICONS/align-to-left.png"/></button>
+            <button onclick="onAlignCenter()"><img src="ICONS/center-text-alignment.png"/></button>
+            <button onclick="onAlignRight()"><img src="ICONS/align-to-right.png"/></button>
+            <a href="#" onclick="downloadCanvas(this)" download="">Download</a>
+                <div class="inputs">
+            
+                    <button class="btn" onclick="uploadImg()">Upload Image from Canvas</button>
+                    <p class="user-msg"></p>
+                    <div class="share-container"></div>
+                </div>
         </div>
-        <button onclick="randomMeme()">Im flexible</button>
+        <button onclick="onClickRandMeme()">Im flexible</button>
         <div class="img-container">
     </div>
+    <script src="js/utils.js"></script>
     <script src="js/storage.service.js"></script>
     <script src="js/gallery-controller.js"></script>
     <script src="js/meme-service.js"></script>
     <script src="js/meme-controller.js"></script>
+    <script src="js/upload-service.js"></script>
     <script src="js/main.js"></script>
 </body>
 

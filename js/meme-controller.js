@@ -13,6 +13,8 @@ function renderMeme() {
 
 }
 
+
+
 function onImgSelect(imgId) {
     hideGallery()
     setImg(imgId)
@@ -61,4 +63,25 @@ function setLineTxt() {
     let userText = document.querySelector('.user-text').value
     gMeme.lines[gMeme.selectedLineIdx].txt = userText
     renderMeme()
+}
+
+function onAlignLeft() {
+    textAlignLeft()
+    renderMeme()
+}
+function onAlignCenter() {
+    textAlignCenter()
+    renderMeme()
+}
+function onAlignRight() {
+    textAlignRight()
+    renderMeme()
+}
+
+function onClickRandMeme() {
+    const randNum = getRandomInt(1, gImgs.length + 1)
+    hideGallery()
+    setImg(randNum)
+    renderMeme()
+    console.log('randNum', randNum);
 }

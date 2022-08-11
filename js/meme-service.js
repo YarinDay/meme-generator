@@ -118,6 +118,22 @@ function setImg(imgId) {
     gMeme.selectedImgId = imgId
 }
 
+function textAlignLeft() {
+gMeme.lines[gMeme.selectedLineIdx].align = 'left'
+}
+function textAlignCenter() {
+    gMeme.lines[gMeme.selectedLineIdx].align = 'center'
+    
+}
+function textAlignRight() {
+    gMeme.lines[gMeme.selectedLineIdx].align = 'right'
+
+}
+
+function randomMeme() {
+
+}
+
 // function setTextBorderColor(color) {
 //     gTextBorderColor = color
 //     renderMeme()
