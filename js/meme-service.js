@@ -30,11 +30,11 @@ var gMeme = {
             txt: '',
             size: 20,
             align: 'center',
-            textColor: '#121212'
+            textColor: '#121212',
+            isFocused: true
         }
     ]
 }
-var isChoseImg = false
 // var gTextBorderColor = '#121212'
 // var gTextColor = '#121212'
 
@@ -54,17 +54,64 @@ function switchLine() {
     var meme = getMeme()
     if (meme.selectedLineIdx < meme.lines.length - 1) meme.selectedLineIdx++
     else meme.selectedLineIdx = 0
+    if (meme.selectedLineIdx === meme.lines.length - 1) {
+        meme.lines[meme.lines.length - 1].isFocused = true
+    } else {
+        meme.lines[meme.lines.length - 1].isFocused = false
+    }
     console.log(meme.selectedLineIdx);
 }
 
-function addLine(txt,textColor) {
+function drawImg(meme) {
+    const img = new Image();
+    img.src = `img/${meme.selectedImgId}.jpg`;
+    img.onload = () => {
+        gCtx.drawImage(img, 0, 0);
+        meme.lines.map((line, idx) => {
+            return drawText(meme, line.txt, idx)
+        })
+    }
+    gElCanvas.height = img.height
+    gElCanvas.width = img.width
+
+}
+
+function drawText(meme, txt, idx) {
+    gCtx.font = `${meme.lines[idx].size}px Comic Sans MS`;
+    // if (meme.lines[meme.selectedLineIdx].isFocused) {
+    //     gCtx.fillStyle = 'lightgray';
+    //     gCtx.fillRect(0, 0, gElCanvas.width / 2, 40);
+    // } else {
+    //     gCtx.fillStyle = 'grey';
+    //     gCtx.fillRect(0, 0, gElCanvas.width / 2, 40);
+    // }
+
+    gCtx.fillStyle = meme.lines[idx].textColor;
+    gCtx.strokeStyle = meme.lines[idx].textColor;
+    gCtx.textAlign = meme.lines[idx].align;
+    if (idx === 0) {
+        gCtx.fillText(txt, gElCanvas.width / 2, 40);
+
+    }
+    else if (idx === 1) {
+        gCtx.fillText(txt, gElCanvas.width / 2, gElCanvas.height - 40);
+    }
+    else gCtx.fillText(txt, gElCanvas.width / 2, gElCanvas.height / 2);
+
+}
+
+function addLine(txt, textColor) {
+
     gMeme.lines[gMeme.lines.length] = {
         txt,
         size: 20,
         align: 'center',
-        textColor
+        textColor,
+        isFocused: true
     }
-    gMeme.selectedLineIdx = gMeme.lines.length-1
+    gMeme.selectedLineIdx = gMeme.lines.length - 1
+    gMeme.lines[gMeme.selectedLineIdx].txt = ''
+    console.log('GMEME', gMeme);
 }
 
 function setImg(imgId) {

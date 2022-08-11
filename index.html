@@ -19,14 +19,15 @@
         <input type="text" class="user-text" oninput="setLineTxt()" placeholder="text">
         <!-- Text Border Color: <input type="color" onchange="getTextBorderColor(this.value)" id="color" class="border-color"
             value="#121212" /> -->
-        Text Color: <input type="color" onchange="getTextColor(this.value)" id="color" class="shape-color"
+        Text Color: <input type="color" oninput="getTextColor(this.value)" id="color" class="shape-color"
             value="#121212" />
             <button onclick="onIncreaseFont()"><img src="ICONS/increase font - icon.png"/></button>
             <button onclick="onDecreaseFont()"><img src="ICONS/decrease font - icon.png"/></button>
             <button onclick="onSwitchLine()"><img src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png"/></button>
             <button onclick="onAddLine()"><img src="ICONS/add.png"/></button>
-    </div>
-    <div class="img-container">
+        </div>
+        <button onclick="randomMeme()">Im flexible</button>
+        <div class="img-container">
     </div>
     <script src="js/storage.service.js"></script>
     <script src="js/gallery-controller.js"></script>

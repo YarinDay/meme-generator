@@ -1,27 +1,15 @@
 'use strict'
 
 
+function renderCanvas() {
+
+}
+
 function renderMeme() {
     const meme = getMeme()
-    const img = new Image();
-    img.src = `img/${meme.selectedImgId}.jpg`;
-    img.onload = () => {
-        gCtx.drawImage(img, 0, 0);
-        gCtx.font = `${meme.lines[meme.selectedLineIdx].size}px Comic Sans MS`;
-        gCtx.fillStyle = meme.lines[meme.selectedLineIdx].textColor;
-        gCtx.textAlign = meme.lines[meme.selectedLineIdx].align;
-        if (meme.selectedLineIdx === 0) {
-            gCtx.fillText(meme.lines[meme.selectedLineIdx].txt, img.width / 2, 40);
-        }
-        else if (meme.selectedLineIdx === 1) {
-            gCtx.fillText(meme.lines[meme.selectedLineIdx].txt, img.width / 2, img.height - 30);
-        }
-        else gCtx.fillText(meme.lines[meme.selectedLineIdx].txt, img.width / 2, img.height / 2);
+    drawImg(meme)
 
-    };
-    gElCanvas.height = img.height
-    gElCanvas.width = img.width
-    console.log(gMeme);
+    console.log('gMeme INIT', meme);
 
 }
 
@@ -53,6 +41,7 @@ function onDecreaseFont() {
 function onSwitchLine() {
     switchLine()
     document.querySelector('.user-text').value = gMeme.lines[gMeme.selectedLineIdx].txt
+    document.querySelector('.shape-color').value = gMeme.lines[gMeme.selectedLineIdx].textColor
     renderMeme()
 }
 
@@ -68,6 +57,7 @@ function getLineTxt() {
 }
 
 function setLineTxt() {
+    if (!gMeme.lines.length) return
     let userText = document.querySelector('.user-text').value
     gMeme.lines[gMeme.selectedLineIdx].txt = userText
     renderMeme()
