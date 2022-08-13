@@ -1,7 +1,8 @@
 'use strict'
 
-var gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
-var gImgs = [
+const KEY = 'memesDB'
+const gKeywordSearchCountMap = { 'funny': 12, 'cat': 16, 'baby': 2 }
+const gImgs = [
     { id: 1, url: 'img/1.jpg', keywords: ['funny', 'cat'] },
     { id: 2, url: 'img/2.jpg', keywords: ['funny', 'happy'] },
     { id: 3, url: 'img/3.jpg', keywords: ['funny', 'cat'] },
@@ -22,7 +23,12 @@ var gImgs = [
     { id: 18, url: 'img/18.jpg', keywords: ['funny', 'happy'] },
     { id: 19, url: 'img/19.jpg', keywords: ['funny', 'happy'] }
 ];
-var gMeme = {
+const randomWords = ['Dont look up!', 'What are you doing?', 'thats really funny bro',
+    'what do you mean?', 'Thats what she said', 'And then she said', 'Not gonna happen',
+    'You think you are funny?', 'Ok thats funny', 'SMORT', 'Yea, but why?',
+    'stop it!!', 'Lets dance!', 'Politic?', 'Yes', 'No']
+
+let gMeme = {
     selectedImgId: 2,
     selectedLineIdx: 0,
     lines: [
@@ -30,13 +36,12 @@ var gMeme = {
             txt: '',
             size: 20,
             align: 'center',
-            textColor: '#121212',
+            textColor: '#FFFFFF',
+            textBorderColor: '#121212',
             isFocused: true
         }
     ]
 }
-// var gTextBorderColor = '#121212'
-// var gTextColor = '#121212'
 
 function getMeme() {
     return gMeme
@@ -59,7 +64,6 @@ function switchLine() {
     } else {
         meme.lines[meme.lines.length - 1].isFocused = false
     }
-    console.log(meme.selectedLineIdx);
 }
 
 function drawImg(meme) {
@@ -73,45 +77,42 @@ function drawImg(meme) {
     }
     gElCanvas.height = img.height
     gElCanvas.width = img.width
-
 }
 
 function drawText(meme, txt, idx) {
     gCtx.font = `${meme.lines[idx].size}px Comic Sans MS`;
-    // if (meme.lines[meme.selectedLineIdx].isFocused) {
-    //     gCtx.fillStyle = 'lightgray';
-    //     gCtx.fillRect(0, 0, gElCanvas.width / 2, 40);
-    // } else {
-    //     gCtx.fillStyle = 'grey';
-    //     gCtx.fillRect(0, 0, gElCanvas.width / 2, 40);
-    // }
-
     gCtx.fillStyle = meme.lines[idx].textColor;
-    gCtx.strokeStyle = meme.lines[idx].textColor;
+    gCtx.strokeStyle = meme.lines[idx].textBorderColor;
     gCtx.textAlign = meme.lines[idx].align;
     if (idx === 0) {
         gCtx.fillText(txt, gElCanvas.width / 2, 40);
+        gCtx.strokeText(txt, gElCanvas.width / 2, 40);
 
     }
     else if (idx === 1) {
         gCtx.fillText(txt, gElCanvas.width / 2, gElCanvas.height - 40);
+        gCtx.strokeText(txt, gElCanvas.width / 2, gElCanvas.height - 40);
     }
-    else gCtx.fillText(txt, gElCanvas.width / 2, gElCanvas.height / 2);
-
+    else {
+        gCtx.fillText(txt, gElCanvas.width / 2, gElCanvas.height / 2);
+        gCtx.strokeText(txt, gElCanvas.width / 2, gElCanvas.height / 2);
+    }
 }
 
-function addLine(txt, textColor) {
-
+function addLine(txt, textColor, textBorderColor) {
     gMeme.lines[gMeme.lines.length] = {
         txt,
         size: 20,
         align: 'center',
         textColor,
+        textBorderColor,
         isFocused: true
     }
+
+    console.log(gMeme.lines[gMeme.selectedLineIdx])
     gMeme.selectedLineIdx = gMeme.lines.length - 1
+
     gMeme.lines[gMeme.selectedLineIdx].txt = ''
-    console.log('GMEME', gMeme);
 }
 
 function setImg(imgId) {
@@ -119,29 +120,102 @@ function setImg(imgId) {
 }
 
 function textAlignLeft() {
-gMeme.lines[gMeme.selectedLineIdx].align = 'left'
+    gMeme.lines[gMeme.selectedLineIdx].align = 'right'
 }
 function textAlignCenter() {
     gMeme.lines[gMeme.selectedLineIdx].align = 'center'
-    
+
 }
 function textAlignRight() {
-    gMeme.lines[gMeme.selectedLineIdx].align = 'right'
+    gMeme.lines[gMeme.selectedLineIdx].align = 'left'
 
+}
+
+function resetMeme() {
+    gMeme = {
+        selectedImgId: 2,
+        selectedLineIdx: 0,
+        lines: [
+            {
+                txt: '',
+                size: 20,
+                align: 'center',
+                textColor: '#FFFFFF',
+                textBorderColor: '#121212',
+                isFocused: true
+            }
+        ]
+    }
 }
 
 function randomMeme() {
-
+    const randNum = getRandomInt(1, gImgs.length + 1)
+    const randLines = getRandomInt(1, 3)
+    if (randLines === 1) {
+        gMeme.lines[0].txt = randomWords[getRandomInt(0, randomWords.length)]
+        gMeme.lines[0].textColor = getRandomColor()
+        gMeme.lines[0].textBorderColor = getRandomColor()
+        gMeme.lines[0].size = getRandomInt(15, 41)
+    } else {
+        gMemeTwoLines()
+        gMeme.lines[0].txt = randomWords[getRandomInt(0, randomWords.length)]
+        gMeme.lines[1].txt = randomWords[getRandomInt(0, randomWords.length)]
+        gMeme.lines[0].textColor = getRandomColor()
+        gMeme.lines[1].textColor = getRandomColor()
+        gMeme.lines[0].textBorderColor = getRandomColor()
+        gMeme.lines[1].textBorderColor = getRandomColor()
+        gMeme.lines[0].size = getRandomInt(15, 41)
+        gMeme.lines[1].size = getRandomInt(15, 41)
+    }
+    setImg(randNum)
 }
 
-// function setTextBorderColor(color) {
-//     gTextBorderColor = color
-//     renderMeme()
-// }
+function gMemeTwoLines() {
+    gMeme = {
+        selectedImgId: 2,
+        selectedLineIdx: 0,
+        lines: [
+            {
+                txt: '',
+                size: 20,
+                align: 'center',
+                textColor: '#FFFFFF',
+                textBorderColor: '#121212',
+                isFocused: true
+            },
+            {
+                txt: '',
+                size: 20,
+                align: 'center',
+                textColor: '#FFFFFF',
+                textBorderColor: '#121212',
+                isFocused: true
+            }
+        ]
+    }
+}
+
+function setTextBorderColor(color) {
+    gMeme.lines[gMeme.selectedLineIdx].textBorderColor = color
+}
 
 function setTextColor(color) {
     gMeme.lines[gMeme.selectedLineIdx].textColor = color
 }
+
+function saveMeme() {
+    _saveMemesToStorage()
+}
+
+function savedMemes(){
+    var meme = loadFromStorage(KEY)
+    drawImg(meme)
+}
+
+function _saveMemesToStorage() {
+    saveToStorage(KEY, gMeme)
+}
+
 
 // function setImg(meme) {
 //     let imgPicked

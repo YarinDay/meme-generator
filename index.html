@@ -5,39 +5,102 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>My Meme Generator</title>
     <link rel="stylesheet" href="css/main.css">
+    <link rel = "icon" href = 
+"https://is3-ssl.mzstatic.com/image/thumb/Purple112/v4/9e/a2/f8/9ea2f8fc-8e74-72a5-c530-b123014a23a1/AppIcon-0-0-1x_U007emarketing-0-4-0-85-220.png/1024x1024bb.png" 
+        type = "image/x-icon">
 </head>
 
 <body onload="init()">
-    <div class="canvas-container">
-        <h3 class="title">Make your meme!</h3>
-        <canvas id="my-canvas" class="my-canvas" height="250" width="450" style="outline:2px solid #121212"
-            onclick="onClickCanvas(event)"></canvas>
-    </div>
-    <div class="img-editor">
-        <input type="text" class="user-text" oninput="setLineTxt()" placeholder="text">
-        <!-- Text Border Color: <input type="color" onchange="getTextBorderColor(this.value)" id="color" class="border-color"
-            value="#121212" /> -->
-        Text Color: <input type="color" oninput="getTextColor(this.value)" id="color" class="shape-color"
-            value="#121212" />
-            <button onclick="onIncreaseFont()"><img src="ICONS/increase font - icon.png"/></button>
-            <button onclick="onDecreaseFont()"><img src="ICONS/decrease font - icon.png"/></button>
-            <button onclick="onSwitchLine()"><img src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png"/></button>
-            <button onclick="onAddLine()"><img src="ICONS/add.png"/></button>
-            <button onclick="onAlignLeft()"><img src="ICONS/align-to-left.png"/></button>
-            <button onclick="onAlignCenter()"><img src="ICONS/center-text-alignment.png"/></button>
-            <button onclick="onAlignRight()"><img src="ICONS/align-to-right.png"/></button>
-            <a href="#" onclick="downloadCanvas(this)" download="">Download</a>
+    <div class="main-content">
+        <header class="main-header full main-layout">
+            <div class="main-header flex space-between align-center">
+                <div class="logo-main flex align-center">
+                    <img src="LOGO/LOGO.png" />
+                </div>
+                <nav class="main-nav">
+                    <ul class="main-nav-list flex clean-list menu-opened">
+                        <li onclick="backToGallery()" class="list flex align-center"><a href="#">Gallery</a></li>
+                        <li onclick="toggleNav()" class="list flex align-center"><a href="#me">About</a></li>
+                        <li onclick="onSavedMemes()" class="list flex align-center"><a href="#">Saved</a></li>
+                    </ul>
+                </nav>
+                <button class="open-close-nav" onclick="toggleNav()">☰</button>
+            </div>
+        </header>
+        <div class="canvas-container">
+            <h3 class="title">Make your meme!</h3>
+            <canvas id="my-canvas" class="my-canvas" height="250" width="450" style="outline:2px solid #121212"
+                onclick="onClickCanvas(event)"></canvas>
+        </div>
+        <div class="img-editor">
+
+            Enter Text Here:<input type="text" class="user-text" oninput="setLineTxt()" placeholder="text">
+            <div class="font-editor">
+                Text Border Color: <input type="color" onchange="getTextBorderColor(this.value)" id="color"
+                    class="border-color" value="#121212" />
+
+                Text Color: <input type="color" oninput="getTextColor(this.value)" id="color" class="text-color"
+                    value="#FFFFFF" />
+                <button onclick="onIncreaseFont()"><img src="ICONS/increase font - icon.png" /></button>
+                <button onclick="onDecreaseFont()"><img src="ICONS/decrease font - icon.png" /></button>
+                <button onclick="onSwitchLine()"><img
+                        src="ICONS/up-and-down-opposite-double-arrows-side-by-side.png" /></button>
+                <button onclick="onAddLine()"><img src="ICONS/add.png" /></button>
+                <button class="save-btn" onclick="onSaveMeme()"><img src="ICONS/save.png" /></button>
+                <div>
+
+                    <button onclick="onAlignLeft()"><img src="ICONS/align-to-left.png" /></button>
+                    <button onclick="onAlignCenter()"><img src="ICONS/center-text-alignment.png" /></button>
+                    <button onclick="onAlignRight()"><img src="ICONS/align-to-right.png" /></button>
+                </div>
+                <button class="download-btn"><a href="#" onclick="downloadCanvas(this)"
+                        download="">Download</a></button>
                 <div class="inputs">
-            
-                    <button class="btn" onclick="uploadImg()">Upload Image from Canvas</button>
+
+                    <button class="upload-btn" onclick="uploadImg()">Upload Image from Canvas</button>
                     <p class="user-msg"></p>
                     <div class="share-container"></div>
                 </div>
+            </div>
         </div>
-        <button onclick="onClickRandMeme()">Im flexible</button>
+        <button class="rand-img flex" onclick="onClickRandMeme()">Im flexible</button>
         <div class="img-container">
+        </div>
+    </div>
+    <!-- Me -->
+    <div class="team-member" id="me">
+        <footer class="main-footer flex align-center full">
+            <img class="yarin-img" src="img/My Img/yarinpic.jpg" alt="">
+            <div>
+                <h4>Yarin Dayan</h4>
+                <ul class="flex clean-list social-buttons">
+                    <li>
+                        <a href="https://twitter.com/yarindayan11">
+                            <i class="fa twitter" aria-label="twitter icon"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.facebook.com/profile.php?id=100009439941884">
+                            <i class="fa facebook" aria-label="facebook icon"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.instagram.com/yarin.dayan1/">
+                            <i class="fa instagram" aria-label="instagram icon"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <p class="about-description">About me: My name is Yarin Dayan, I'm 22 Years Old from
+                Rishon
+                Lesyion, Israel.
+                In my spare time I love playing in the computer and watching Netflix and Chill.
+                My goal is to become and real Full Stack Developer because I really love to program and making my
+                own stuff.
+            </p>
+        </footer>
     </div>
     <script src="js/utils.js"></script>
     <script src="js/storage.service.js"></script>

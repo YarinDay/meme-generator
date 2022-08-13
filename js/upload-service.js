@@ -8,9 +8,9 @@ function uploadImg() {
         document.querySelector('.user-msg').innerText = `Your meme is available here: ${uploadedImgUrl}`
 
         document.querySelector('.share-container').innerHTML = `
-        <a class="btn" href="https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
+        <button class="download-btn"><a class="btn" href="https://www.facebook.com/sharer/sharer.php?u=${encodedUploadedImgUrl}&t=${encodedUploadedImgUrl}" title="Share on Facebook" target="_blank" onclick="window.open('https://www.facebook.com/sharer/sharer.php?u=${uploadedImgUrl}&t=${uploadedImgUrl}'); return false;">
            Share to Facebook(Meta)  
-        </a>`
+        </a></button>`
     }
     doUploadImg(imgDataUrl, onSuccess);
 }

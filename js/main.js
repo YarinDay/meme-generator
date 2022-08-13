@@ -5,24 +5,47 @@ var gCtx;
 
 function init() {
     gElCanvas = document.getElementById('my-canvas')
-    console.log('gElCanvas', gElCanvas);
     gCtx = gElCanvas.getContext('2d')
-    console.log('ctx', gCtx);
     renderGallery()
     renderMeme()
-    console.log(getMeme(gMeme))
 }
 
 
-function hideGallery(){
-    document.querySelector('.title').style.visibility= 'visible';
-    document.querySelector('.my-canvas').style.visibility= 'visible';
-    document.querySelector('.img-editor').style.visibility= 'visible';
-    // document.querySelector('.img-container').style.visibility= 'hidden';
+function hideGallery() {
+    document.querySelector('.title').style.display = 'block';
+    document.querySelector('.canvas-container').style.display = 'flex';
+    document.querySelector('.img-editor').style.display = 'flex';
+    document.querySelector('.img-container').style.display = 'none';
+    document.querySelector('.rand-img').style.display = 'none';
 }
 
 function downloadCanvas(elLink) {
     const data = gElCanvas.toDataURL()
     elLink.href = data
     elLink.download = 'my-image.jpg'
+}
+
+function backToGallery() {
+    resetMeme()
+    document.body.classList.toggle('menu-opened')
+    document.querySelector('.user-text').value= ''
+    document.querySelector('.title').style.display = 'none';
+    document.querySelector('.canvas-container').style.display = 'none';
+    document.querySelector('.img-editor').style.display = 'none';
+    document.querySelector('.img-container').style.display = 'grid';
+    document.querySelector('.rand-img').style.display = 'flex';
+}
+
+function onSavedMemes(){
+    document.body.classList.toggle('menu-opened')
+    savedMemes()
+    document.querySelector('.title').style.display = 'block';
+    document.querySelector('.canvas-container').style.display = 'flex';
+    document.querySelector('.img-editor').style.display = 'flex';
+    document.querySelector('.img-container').style.display = 'none';
+    document.querySelector('.rand-img').style.display = 'none';
+}
+
+function toggleNav() {
+    document.body.classList.toggle('menu-opened')
 }
