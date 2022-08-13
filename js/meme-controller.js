@@ -4,7 +4,6 @@
 function renderMeme() {
     const meme = getMeme()
     drawImg(meme)
-
 }
 
 function onImgSelect(imgId) {

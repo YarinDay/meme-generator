@@ -34,7 +34,7 @@ let gMeme = {
     lines: [
         {
             txt: '',
-            size: 20,
+            size: 30,
             align: 'center',
             textColor: '#FFFFFF',
             textBorderColor: '#121212',
@@ -102,7 +102,7 @@ function drawText(meme, txt, idx) {
 function addLine(txt, textColor, textBorderColor) {
     gMeme.lines[gMeme.lines.length] = {
         txt,
-        size: 20,
+        size: 30,
         align: 'center',
         textColor,
         textBorderColor,
@@ -138,7 +138,7 @@ function resetMeme() {
         lines: [
             {
                 txt: '',
-                size: 20,
+                size: 30,
                 align: 'center',
                 textColor: '#FFFFFF',
                 textBorderColor: '#121212',
@@ -177,7 +177,7 @@ function gMemeTwoLines() {
         lines: [
             {
                 txt: '',
-                size: 20,
+                size: 30,
                 align: 'center',
                 textColor: '#FFFFFF',
                 textBorderColor: '#121212',
@@ -185,7 +185,7 @@ function gMemeTwoLines() {
             },
             {
                 txt: '',
-                size: 20,
+                size: 30,
                 align: 'center',
                 textColor: '#FFFFFF',
                 textBorderColor: '#121212',
@@ -207,22 +207,11 @@ function saveMeme() {
     _saveMemesToStorage()
 }
 
-function savedMemes(){
-    var meme = loadFromStorage(KEY)
-    drawImg(meme)
-}
-
 function _saveMemesToStorage() {
     saveToStorage(KEY, gMeme)
 }
 
-
-// function setImg(meme) {
-//     let imgPicked
-//     gImgs.forEach(img => {
-//         if (img.id === meme.selectedImgId) {
-//             imgPicked = img.url
-//         }
-//     })
-//     return imgPicked
-// }
+function savedMemes(){
+    var meme = loadFromStorage(KEY)
+    drawImg(meme)
+}

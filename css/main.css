@@ -93,7 +93,7 @@ body.menu-opened .main-nav-list {
 
 .img-container {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 4px;
     margin: 20px;
 }
@@ -105,7 +105,7 @@ body.menu-opened .main-nav-list {
     justify-content: center;
     align-items: center;
     margin: 10px;
-    width: 200px;
+    width: 300px;
     cursor: pointer;
 }
 
@@ -131,10 +131,11 @@ button img {
     cursor: pointer;
 }
 
-.save-btn{
+.save-btn {
     height: 31px;
 }
-.save-btn>*{
+
+.save-btn>* {
     height: 19px;
 }
 
@@ -148,6 +149,11 @@ button img {
     justify-content: center;
     align-items: center;
     display: none;
+}
+
+.user-text{
+    padding: 13px;
+    border-radius: 7px;
 }
 
 .img-editor>* {
@@ -279,9 +285,7 @@ ul.social-buttons li a:hover {
     .main-layout {
         width: 100%;
     }
-    .img-container {
-        justify-items: center;
-    }
+
     .open-close-nav {
         position: fixed;
         right: 0;
@@ -313,13 +317,25 @@ ul.social-buttons li a:hover {
     }
 }
 
+@media (max-width: 1000px) {
+    .img-container {
+        justify-items: center;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+
+    }
+
+    .img-container>* {
+        width: 200px;
+    }
+}
+
 @media (min-width: 1000px) {
     html {
         font-size: 1.3rem;
     }
 
     .main-content>*:not(.full) {
-        max-width: 1200px;
+        max-width: 1600px;
         margin-inline-end: auto;
         margin-inline-start: auto;
     }
