@@ -279,7 +279,9 @@ ul.social-buttons li a:hover {
     .main-layout {
         width: 100%;
     }
-
+    .img-container {
+        justify-items: center;
+    }
     .open-close-nav {
         position: fixed;
         right: 0;
