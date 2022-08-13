@@ -38,7 +38,7 @@ function backToGallery() {
 
 function onSavedMemes(){
     document.body.classList.toggle('menu-opened')
-    savedMemes()
+    gMeme = savedMemes()
     document.querySelector('.title').style.display = 'block';
     document.querySelector('.canvas-container').style.display = 'flex';
     document.querySelector('.img-editor').style.display = 'flex';

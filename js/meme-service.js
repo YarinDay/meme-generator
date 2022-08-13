@@ -214,4 +214,5 @@ function _saveMemesToStorage() {
 function savedMemes(){
     var meme = loadFromStorage(KEY)
     drawImg(meme)
+    return meme
 }
